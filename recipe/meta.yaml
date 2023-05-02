@@ -31,13 +31,13 @@ requirements:
     - pkg-config  # [not win]
   host:
     - glpk
-    - libxml2
-    - suitesparse
-    - arpack   # [not win]
-    - gmp  # [not win]
-    - mpir  # [win]
-    - libblas
-    - liblapack
+    - libxml2 2.10
+    - suitesparse 7.0.1
+    - arpack 3.9.0   # [not win]
+    - gmp 6.1.2  # [not win]
+    - mpir 3.0.0  # [win]
+    - libblas 3.9.0
+    - liblapack 3.9.0
   run:
     - glpk
     - libxml2
@@ -54,12 +54,9 @@ test:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - vs2017_{{ target_platform }}  # [win]
-  commands:
-    - pkg-config --exists igraph  # [not win]
-    - pkg-config --libs --cflags igraph  # [not win]
 
 about:
-  home: http://igraph.org/c/
+  home: https://igraph.org/c/
   license: GPL-2.0-or-later
   license_family: GPL
   license_file:
