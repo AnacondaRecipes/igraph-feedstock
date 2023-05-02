@@ -30,7 +30,7 @@ requirements:
     - python  # [win]
     - pkg-config  # [not win]
   host:
-    - glpk
+    - glpk 5.0
     - libxml2 2.10
     - suitesparse 7.0.1
     - arpack 3.9.0   # [not win]
