@@ -67,6 +67,8 @@ about:
     igraph is a collection of network analysis tools with the emphasis on efficiency,
     portabiliy and ease of use. igraph is open source and free. igraph can be
     programmed in R, Python and C/C++."
+  doc_url: https://igraph.org/r/doc/
+  dev_url: https://github.com/igraph/igraph
 
 extra:
   recipe-maintainers:
