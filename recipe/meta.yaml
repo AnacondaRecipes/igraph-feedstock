@@ -8,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4f72398c7847bb167f85159b7a9fe1fe69ce0f241c5de5d30b2b347f9dc3f7c6
+  sha256: aa5700b58c5f1e1de1f4637ab14df15c6b20e25e51d0f5a260921818e8f02afc
 build:
   skip: true  # [win and vc<14]
-  skip: true  # [linux and ppc64le]
+  skip: true  # [linux and (s390x or ppc64le)]
   number: 0
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
@@ -31,14 +31,13 @@ requirements:
     - python  # [win]
     - pkg-config  # [not win]
   host:
-    - glpk 5.0
+    - glpk 4.65
     - libxml2 2.10
     - suitesparse 7.0.1
     - arpack 3.9.0   # [not win]
-    - gmp 6.1.2  # [not win]
+    - gmp 6.2.1  # [not win]
     - mpir 3.0.0  # [win]
-    - libblas 3.9.0
-    - liblapack 3.9.0
+    - openblas
   run:
     - glpk
     - libxml2
@@ -46,6 +45,7 @@ requirements:
     - arpack  # [not win]
     - gmp  # [not win]
     - mpir  # [win]
+    - libopenblas
 
 test:
   files:
