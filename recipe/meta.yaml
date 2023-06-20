@@ -31,7 +31,7 @@ requirements:
     - glpk 4.65
     - libxml2 {{ libxml2 }}
     - arpack 3.9.0
-    - gmp 6.2.1
+    - gmp 6.2.1  # [not win]
     - mpir 3.0.0  # [win]
     - openblas  # [not win]
     - intel-openmp 2023.1.0  # [win]
@@ -41,7 +41,7 @@ requirements:
     - glpk
     - libxml2
     - arpack
-    - gmp
+    - gmp  # [not win]
     - mpir  # [win]
     - libopenblas  # [not win]
     - {{ pin_compatible('intel-openmp') }}  # [win]
