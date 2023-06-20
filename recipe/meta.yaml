@@ -10,7 +10,7 @@ source:
   sha256: aa5700b58c5f1e1de1f4637ab14df15c6b20e25e51d0f5a260921818e8f02afc
 build:
   skip: true  # [win and vc<14]
-  skip: true  # [linux and (s390x or ppc64le)]
+  skip: true  # [linux and ppc64le]
   number: 0
   script_env:  # [osx and arm64]
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
@@ -25,7 +25,7 @@ requirements:
     - cmake
     - ninja
     - make  # [not win]
-    - pkg-config  # [not win]
+    - pkg-config
     - llvm-openmp  # [osx]
   host:
     - glpk 4.65
