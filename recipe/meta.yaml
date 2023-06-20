@@ -30,9 +30,8 @@ requirements:
   host:
     - glpk 4.65
     - libxml2 {{ libxml2 }}
-    - suitesparse 7.0.1
-    - arpack 3.9.0   # [not win]
-    - gmp 6.2.1  # [not win]
+    - arpack 3.9.0
+    - gmp 6.2.1
     - mpir 3.0.0  # [win]
     - openblas  # [not win]
     - intel-openmp 2023.1.0  # [win]
@@ -41,9 +40,8 @@ requirements:
   run:
     - glpk
     - libxml2
-    - suitesparse
-    - arpack  # [not win]
-    - gmp  # [not win]
+    - arpack
+    - gmp
     - mpir  # [win]
     - libopenblas  # [not win]
     - {{ pin_compatible('intel-openmp') }}  # [win]
@@ -70,7 +68,7 @@ about:
     igraph is a collection of network analysis tools with the emphasis on efficiency,
     portabiliy and ease of use. igraph is open source and free. igraph can be
     programmed in R, Python and C/C++."
-  doc_url: https://igraph.org/r/doc/
+  doc_url: https://igraph.org/c/#docs
   dev_url: https://github.com/igraph/igraph
 
 extra:
