@@ -12,7 +12,7 @@ build:
   skip: true  # [win and vc<14]
   skip: true  # [linux and ppc64le]
   number: 0
-  script_env:  # [osx and arm64]
+  script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
     - INTERNAL_GLPK=0  # [not (linux and s390x)]
     - INTERNAL_GLPK=1  # [linux and s390x]
