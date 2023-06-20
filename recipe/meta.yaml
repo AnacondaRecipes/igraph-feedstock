@@ -35,9 +35,9 @@ requirements:
     - gmp 6.2.1  # [not win]
     - mpir 3.0.0  # [win]
     - openblas  # [not win]
-    - intel-openmp {{ mkl }}  # [win]
-    - mkl-devel {{ mkl }}.*  # [win]
-    - mkl {{ mkl }}.*  # [win]
+    - intel-openmp 2023.*  # [win]
+    - mkl-devel 2023.*.*  # [win]
+    - mkl 2023.*.*  # [win]
   run:
     - glpk
     - libxml2
@@ -47,7 +47,7 @@ requirements:
     - mpir  # [win]
     - libopenblas  # [not win]
     - {{ pin_compatible('intel-openmp') }}  # [win]
-    - mkl {{ mkl }}.*  # [win]
+    - mkl 2023.*.*  # [win]
     - _openmp_mutex  # [linux]
 
 test:
