@@ -59,7 +59,6 @@ test:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - vs2017_{{ target_platform }}  # [win]
 
 about:
   home: https://igraph.org/c/
