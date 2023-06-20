@@ -14,6 +14,8 @@ build:
   number: 0
   script_env:  # [osx and arm64]
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
+    - INTERNAL_GLPK=0  # [not (linux and s390x)]
+    - INTERNAL_GLPK=1  # [linux and s390x]
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
@@ -28,7 +30,7 @@ requirements:
     - pkg-config
     - llvm-openmp  # [osx]
   host:
-    - glpk 4.65
+    - glpk 4.65  # [not (linux and s390x)]
     - libxml2 {{ libxml2 }}
     - arpack 3.9.0
     - gmp 6.2.1  # [not win]
@@ -38,7 +40,7 @@ requirements:
     - mkl-devel 2023.1.0  # [win]
     - mkl 2023.1.0  # [win]
   run:
-    - glpk
+    - glpk  # [not (linux and s390x)]
     - libxml2
     - arpack
     - gmp  # [not win]
