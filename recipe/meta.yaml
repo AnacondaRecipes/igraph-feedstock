@@ -24,9 +24,11 @@ build:
 requirements:
   build:
     - libtool  # [unix]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}  # [win]
+    - {{ compiler('c') }}  # [unix]
+    - {{ compiler('cxx') }}  # [unix]
+    - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - python  # [win]
     - cmake
     - ninja
@@ -43,6 +45,7 @@ requirements:
     - intel-openmp 2023.1.0  # [win]
     - mkl-devel 2023.1.0  # [win]
     - mkl 2023.1.0  # [win]
+      # - m2w64-gcc-libgfortran  # [win]
   run:
     - glpk  # [not (linux and s390x)]
     - libxml2
