@@ -6,9 +6,9 @@ if errorlevel 1 exit 1
 
 cd build
 
-set "path_with_backslashes=%LIBRARY_PREFIX%\mingw-w64\lib\pkgconfig"
-set "path_with_forwardslashes=!path_with_backslashes:\=\/!"
-echo %path_with_forwardslashes%
+set "path_to_lib=%LIBRARY_PREFIX%\mingw-w64\lib"
+set "path_to_lib_forwardslashes=!path_to_lib:\=\/!"
+echo %path_to_lib_forwardslashes%
 
 cmake %CMAKE_ARGS% -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
@@ -16,7 +16,8 @@ cmake %CMAKE_ARGS% -GNinja ^
       -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
       -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
-      -DCMAKE_MODULE_PATH=%path_with_forwardslashes% ^
+      -DCMAKE_MODULE_PATH="%path_to_lib_forwardslashes%/pkgconfig" ^
+      -DARPACK_LIBRARY=%path_to_lib_forwardslashes%
       -DCMAKE_POSITION_INDEPENDENT_CODE=on ^
       -DIGRAPH_USE_INTERNAL_BLAS=0 ^
       -DIGRAPH_USE_INTERNAL_LAPACK=0 ^
