@@ -17,7 +17,7 @@ cmake %CMAKE_ARGS% -GNinja ^
       -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_MODULE_PATH="%path_to_lib_forwardslashes%/pkgconfig" ^
-      -DARPACK_LIBRARY=%path_to_lib_forwardslashes%
+      -DARPACK_LIBRARY=%path_to_lib_forwardslashes% ^
       -DCMAKE_POSITION_INDEPENDENT_CODE=on ^
       -DIGRAPH_USE_INTERNAL_BLAS=0 ^
       -DIGRAPH_USE_INTERNAL_LAPACK=0 ^
