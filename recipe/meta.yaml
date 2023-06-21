@@ -30,12 +30,12 @@ requirements:
     - cmake
     - ninja
     - make  # [not win]
-    - pkg-config
+    - pkg-config  # [not win]
     - llvm-openmp  # [osx]
   host:
     - glpk 4.65  # [not (linux and s390x)]
     - libxml2 {{ libxml2 }}
-    - arpack 3.9.0
+    - arpack 3.9.0  # [not win]
     - gmp 6.2.1  # [not win]
     - mpir 3.0.0  # [win]
     - openblas  # [not win]
@@ -45,7 +45,7 @@ requirements:
   run:
     - glpk  # [not (linux and s390x)]
     - libxml2
-    - arpack
+    - arpack  # [not win]
     - gmp  # [not win]
     - mpir  # [win]
     - libopenblas  # [not win]
