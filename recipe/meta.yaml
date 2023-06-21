@@ -26,6 +26,8 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}  # [win]
+    - python  # [win]
     - cmake
     - ninja
     - make  # [not win]
