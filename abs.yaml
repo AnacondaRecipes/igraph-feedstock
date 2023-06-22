@@ -1,5 +1,4 @@
 upload_channels:
-  - ak_test
+  - sfe1ed40
 channels:
-  - ak_test
-upload_without_merge: True
+  - sfe1ed40
