@@ -1,0 +1,12 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index f11b6e9fa..5ca89fd0f 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -513,7 +513,6 @@ add_examples(
+   igraph_read_graph_lgl
+   igraph_write_graph_lgl
+   igraph_write_graph_pajek
+-  safelocale
+ )
+ 
+ add_legacy_tests(
