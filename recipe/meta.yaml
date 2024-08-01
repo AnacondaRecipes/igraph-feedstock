@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: c6dc44324f61f52c098bedb81f6a602365d39d692d5068ca4fc3734b2a15e64c
+  patches:
+    - patches/0001_remove_safelocale.patch  # [osx]
 build:
   skip: true  # [win and vc<14]
   number: 0
@@ -22,9 +24,10 @@ build:
 
 requirements:
   build:
+    - patch  # [osx]
     - libtool  # [unix]
-    - {{ compiler('c') }} 
-    - {{ compiler('cxx') }} 
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - python  # [win]
     - cmake
     - ninja
