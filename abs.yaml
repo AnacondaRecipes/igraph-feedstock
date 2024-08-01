@@ -2,5 +2,4 @@ upload_channels:
   - sfe1ed40
 channels:
   - sfe1ed40
-  - https://staging.continuum.io/prefect/fs/libxml2-feedstock/pr17/1c2e862
 aggregate_branch: libxml_2.13.1
