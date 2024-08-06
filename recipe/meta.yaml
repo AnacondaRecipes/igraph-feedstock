@@ -46,7 +46,7 @@ requirements:
     - mkl 2023.1.0  # [win]
   run:
     - glpk  # [not (linux and s390x)]
-    - {{ pin_compatible('libxml2') }}
+    - libxml2
     - arpack  # [not win]
     - gmp  # [not win]
     - mpir  # [win]
