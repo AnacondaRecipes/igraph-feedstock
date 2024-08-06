@@ -1,3 +1,12 @@
+From 8adafbbc340f4d86392d2ff67db8e5320ebd5343 Mon Sep 17 00:00:00 2001
+From: Steven <scrass@anaconda.com>
+Date: Tue, 6 Aug 2024 10:34:56 -0600
+Subject: [PATCH] remove safelocale from tests/CMakeLists.txt
+
+---
+ tests/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
 diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
 index f11b6e9fa..5ca89fd0f 100644
 --- a/tests/CMakeLists.txt
@@ -10,3 +19,6 @@ index f11b6e9fa..5ca89fd0f 100644
  )
  
  add_legacy_tests(
+-- 
+2.39.3 (Apple Git-145)
+
