@@ -21,7 +21,6 @@ build:
 
 requirements:
   build:
-    - patch  # [osx]
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
