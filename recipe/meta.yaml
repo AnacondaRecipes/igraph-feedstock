@@ -48,7 +48,7 @@ requirements:
     #- glpk  # [not (linux and s390x)]
     #- libxml2
     #- arpack  # [not win]
-    #- gmp  # [not win]
+    - gmp  # [not win]
     #- mpir  # [win]
     - libopenblas  # [not win]
     #- {{ pin_compatible('intel-openmp') }}  # [win]
