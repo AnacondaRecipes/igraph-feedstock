@@ -15,7 +15,7 @@ build:
   number: 0
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
-    - INTERNAL_GLPK=0  # [not (linux and s390x) and not win]
+    - INTERNAL_GLPK=0  # [not win]
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
