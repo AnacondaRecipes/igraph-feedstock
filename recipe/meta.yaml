@@ -26,6 +26,7 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - python  # [win]
     - cmake
     - ninja
