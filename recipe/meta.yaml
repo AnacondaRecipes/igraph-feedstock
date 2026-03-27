@@ -62,7 +62,7 @@ test:
     - {{ compiler('cxx') }}
 
 about:
-  home: https://igraph.org/c/
+  home: https://igraph.org/c
   license: GPL-2.0-or-later
   license_family: GPL
   license_file:
