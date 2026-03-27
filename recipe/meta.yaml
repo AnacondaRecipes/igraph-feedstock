@@ -60,6 +60,7 @@ test:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
 
 about:
   home: https://igraph.org/c
