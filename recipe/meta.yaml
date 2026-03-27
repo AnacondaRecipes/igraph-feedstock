@@ -14,7 +14,7 @@ build:
   skip: true  # [win and vc<14]
   number: 0
   script_env:
-    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
+    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx]
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
