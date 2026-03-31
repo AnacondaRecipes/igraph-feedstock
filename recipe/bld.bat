@@ -5,12 +5,17 @@ if errorlevel 1 exit 1
 
 cd build
 
+rem set prefix to use forward slashes when generating igraph.pc, which pkg-config won't mangle. 
+rem this way the package can be used as dependency by python-igraph.
+set "LIBRARY_PREFIX_FWD=%LIBRARY_PREFIX:\=/%"
+set "LIBRARY_LIB_FWD=%LIBRARY_LIB:\=/%"
+set "LIBRARY_INC_FWD=%LIBRARY_INC:\=/%"
 cmake %CMAKE_ARGS% -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
-      -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
-      -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
-      -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+      -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB_FWD% ^
+      -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC_FWD% ^
+      -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX_FWD% ^
       -DCMAKE_POSITION_INDEPENDENT_CODE=on ^
       -DIGRAPH_USE_INTERNAL_BLAS=0 ^
       -DIGRAPH_USE_INTERNAL_LAPACK=0 ^
