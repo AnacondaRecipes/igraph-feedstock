@@ -39,8 +39,3 @@ ctest --progress --output-on-failure --extra-verbose -j%CPU_COUNT%
 if errorlevel 1 exit 1
 cmake --build . --config Release --target install -j%CPU_COUNT%
 if errorlevel 1 exit 1
-
-rem clear the 'Libs.private' of generated igraph.pc file, in order to prevent pkg-config from attempting to link
-rem against blas.lib and others in downstream packages (python-igraph).
-powershell -Command "(Get-Content '%LIBRARY_PREFIX%\lib\pkgconfig\igraph.pc') -replace 'Libs.private:.*', 'Libs.private:' | Set-Content '%LIBRARY_PREFIX%\lib\pkgconfig\igraph.pc'"
-if errorlevel 1 exit 1
