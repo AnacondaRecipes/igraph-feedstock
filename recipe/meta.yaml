@@ -32,6 +32,7 @@ requirements:
     - llvm-openmp  # [osx]
     # Used for post-build testing. undocumented.
     #- zstd
+    - powershell  # [win]
   host:
     - glpk 4.65
     - libxml2 {{ libxml2 }}
