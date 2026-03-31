@@ -8,11 +8,11 @@ package:
 source:
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 91e23e080634393dec4dfb02c2ae53ac4e3837172bb9047d32e39380b16c0bb0
-  patches:  # [osx]
+  patches:
     - patches/0001_remove_safelocale.patch  # [osx]
     # clear the 'Libs.private' of generated igraph.pc file, in order to prevent pkg-config from attempting to link
     # against blas.lib and others in downstream packages (python-igraph).
-    #- patches/clear_pkgconfig_libs_private.patch  # [win]
+    - patches/clear_pkgconfig_libs_private.patch  # [win]
     
 build:
   skip: true  # [win and vc<14]
