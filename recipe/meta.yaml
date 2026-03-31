@@ -12,7 +12,7 @@ source:
     - patches/0001_remove_safelocale.patch  # [osx]
     # clear the 'Libs.private' of generated igraph.pc file, in order to prevent pkg-config from attempting to link
     # against blas.lib and others in downstream packages (python-igraph).
-    - patches/clear_pkgconfig_libs_private.patch  # [win]
+    #- patches/clear_pkgconfig_libs_private.patch  # [win]
     
 build:
   skip: true  # [win and vc<14]
