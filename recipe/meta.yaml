@@ -17,8 +17,8 @@ source:
 build:
   skip: true  # [win and vc<14]
   number: 0
-  script_env:
-    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx]
+  #script_env:
+  #  - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
@@ -34,8 +34,6 @@ requirements:
     - make  # [not win]
     - pkg-config  # [not win]
     - llvm-openmp  # [osx]
-    # Used for post-build testing. undocumented.
-    #- zstd
   host:
     - glpk 4.65
     - libxml2 {{ libxml2 }}
@@ -47,14 +45,8 @@ requirements:
     - mkl-devel 2025.0.0  # [win]
     - mkl 2025.0.0  # [win]
   run:
-    #- glpk
-    #- libxml2
-    #- arpack  # [not win]
-    #- gmp  # [not win]
-    #- mpir  # [win]
-    - libopenblas  # [not win]
     - {{ pin_compatible('intel-openmp') }}  # [win]
-    #- mkl 2023.*.*  # [win]
+    - libopenblas  # [not win]
     - _openmp_mutex  # [linux]
 
 test:
