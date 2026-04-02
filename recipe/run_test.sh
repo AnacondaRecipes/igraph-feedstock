@@ -2,6 +2,9 @@
 set -e
 system=$(uname -s)
 
+test -f ${PREFIX}/include/igraph.h || test -f ${PREFIX}/include/igraph/igraph.h
+pkg-config --exists igraph
+
 case $system in
     "Linux" )
 	${CC} igraph_test.c $(pkg-config --libs --cflags igraph) ${CFLAGS} ${LDFLAGS} -o igraph_test

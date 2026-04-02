@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.10.13" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name }}
@@ -7,27 +7,23 @@ package:
 
 source:
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c6dc44324f61f52c098bedb81f6a602365d39d692d5068ca4fc3734b2a15e64c
-  patches:  # [osx]
+  sha256: 91e23e080634393dec4dfb02c2ae53ac4e3837172bb9047d32e39380b16c0bb0
+  patches:
     - patches/0001_remove_safelocale.patch  # [osx]
+    # clear the 'Libs.private' of generated igraph.pc file, in order to prevent pkg-config from attempting to link
+    # against blas.lib and others in downstream packages (python-igraph).
+    - patches/clear_pkgconfig_libs_private.patch  # [win]
+    
 build:
-  skip: true  # [win and vc<14]
   number: 0
-  script_env:
-    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [osx and arm64]
-    - INTERNAL_GLPK=0  # [not (linux and s390x) and not win]
-    - INTERNAL_GLPK=1  # [linux and s390x]
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
-  missing_dso_whitelist:  # [s390x]
-    - '$RPATH/ld64.so.1'  # [s390x]
 
 requirements:
   build:
-    - patch  # [osx]
-    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - python  # [win]
     - cmake
     - ninja
@@ -35,24 +31,18 @@ requirements:
     - pkg-config  # [not win]
     - llvm-openmp  # [osx]
   host:
-    - glpk 4.65  # [not (linux and s390x)]
+    - glpk 4.65
     - libxml2 {{ libxml2 }}
     - arpack 3.9.0  # [not win]
     - gmp 6.2.1  # [not win]
     - mpir 3.0.0  # [win]
     - openblas  # [not win]
-    - intel-openmp 2023.1.0  # [win]
-    - mkl-devel 2023.1.0  # [win]
-    - mkl 2023.1.0  # [win]
+    - intel-openmp 2025.0.0  # [win]
+    - mkl-devel 2025.0.0  # [win]
+    - mkl 2025.0.0  # [win]
   run:
-    - glpk  # [not (linux and s390x)]
-    - libxml2
-    - arpack  # [not win]
-    - gmp  # [not win]
-    - mpir  # [win]
-    - libopenblas  # [not win]
     - {{ pin_compatible('intel-openmp') }}  # [win]
-    - mkl 2023.*.*  # [win]
+    - libopenblas  # [not win]
     - _openmp_mutex  # [linux]
 
 test:
@@ -62,9 +52,10 @@ test:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
 
 about:
-  home: https://igraph.org/c/
+  home: https://igraph.org/c
   license: GPL-2.0-or-later
   license_family: GPL
   license_file:
@@ -74,7 +65,7 @@ about:
   description: |
     igraph is a collection of network analysis tools with the emphasis on efficiency,
     portabiliy and ease of use. igraph is open source and free. igraph can be
-    programmed in R, Python and C/C++."
+    programmed in R, Python and C/C++.
   doc_url: https://igraph.org/c/#docs
   dev_url: https://github.com/igraph/igraph
 
