@@ -23,7 +23,6 @@ cmake ${CMAKE_ARGS} -GNinja \
     -DBUILD_SHARED_LIBS=on \
     -DIGRAPH_ENABLE_LTO=1 \
     -DIGRAPH_ENABLE_TLS=1 \
-    -DBUILD_SHARED_LIBS=on \
     -DBLAS_LIBRARIES="-lopenblas" \
     ..
 
