@@ -10,7 +10,14 @@ rem this way the package can be used as dependency by python-igraph.
 set "LIBRARY_PREFIX_FWD=%LIBRARY_PREFIX:\=/%"
 set "LIBRARY_LIB_FWD=%LIBRARY_LIB:\=/%"
 set "LIBRARY_INC_FWD=%LIBRARY_INC:\=/%"
-cmake %CMAKE_ARGS% -GNinja ^
+
+if "%blas_impl%"=="openblas" (
+    set "BLAS_CMAKE_FLAGS=-DBLA_VENDOR=OpenBLAS"
+) else (
+    set "BLAS_CMAKE_FLAGS=-DBLA_VENDOR=Intel10_64lp"
+)
+
+cmake %CMAKE_ARGS% %BLAS_CMAKE_FLAGS% -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
       -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB_FWD% ^

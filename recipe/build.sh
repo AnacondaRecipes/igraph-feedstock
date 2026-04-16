@@ -3,12 +3,18 @@
 set -ex
 system=$(uname -s)
 
+if [ "${blas_impl:-openblas}" = "openblas" ]; then
+  BLAS_CMAKE_FLAGS="-DBLA_VENDOR=OpenBLAS"
+else
+  BLAS_CMAKE_FLAGS="-DBLA_VENDOR=Intel10_64lp"
+fi
+
 mkdir -p build
 pushd build
 
 cmake ${CMAKE_ARGS} -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
+    -DCMAKE_PREFIX_PATH="${PREFIX}:${BUILD_PREFIX}" \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_INCLUDEDIR=include \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -23,7 +29,7 @@ cmake ${CMAKE_ARGS} -GNinja \
     -DBUILD_SHARED_LIBS=on \
     -DIGRAPH_ENABLE_LTO=1 \
     -DIGRAPH_ENABLE_TLS=1 \
-    -DBLAS_LIBRARIES="-lopenblas" \
+    ${BLAS_CMAKE_FLAGS} \
     ..
 
 cmake --build . --config Release --target igraph -- -j${CPU_COUNT}

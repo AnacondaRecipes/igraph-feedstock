@@ -15,7 +15,7 @@ source:
     - patches/clear_pkgconfig_libs_private.patch  # [win]
     
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
@@ -36,13 +36,14 @@ requirements:
     - arpack 3.9.0  # [not win]
     - gmp 6.2.1  # [not win]
     - mpir 3.0.0  # [win]
-    - openblas  # [not win]
-    - intel-openmp 2025.0.0  # [win]
-    - mkl-devel 2025.0.0  # [win]
-    - mkl 2025.0.0  # [win]
+    - openblas {{ openblas }}        # [blas_impl == "openblas"]
+    - libopenblas {{ libopenblas }}  # [blas_impl == "openblas"]
+    - intel-openmp 2025.0.0          # [blas_impl == "mkl"]
+    - mkl-devel 2025.0.0             # [blas_impl == "mkl"]
+    - mkl 2025.0.0                   # [blas_impl == "mkl"]
   run:
-    - {{ pin_compatible('intel-openmp') }}  # [win]
-    - libopenblas  # [not win]
+    - {{ pin_compatible('intel-openmp') }}  # [blas_impl == "mkl"]
+    - libopenblas  # [blas_impl == "openblas"]
     - _openmp_mutex  # [linux]
 
 test:
