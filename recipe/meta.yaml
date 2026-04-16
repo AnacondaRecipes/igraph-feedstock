@@ -38,11 +38,11 @@ requirements:
     - mpir 3.0.0  # [win]
     - openblas {{ openblas }}        # [blas_impl == "openblas"]
     - libopenblas {{ libopenblas }}  # [blas_impl == "openblas"]
-    - intel-openmp 2025.0.0          # [win and blas_impl == "mkl"]
-    - mkl-devel 2025.0.0             # [win and blas_impl == "mkl"]
-    - mkl 2025.0.0                   # [win and blas_impl == "mkl"]
+    - intel-openmp 2025.0.0          # [blas_impl == "mkl"]
+    - mkl-devel 2025.0.0             # [blas_impl == "mkl"]
+    - mkl 2025.0.0                   # [blas_impl == "mkl"]
   run:
-    - {{ pin_compatible('intel-openmp') }}  # [win and blas_impl == "mkl"]
+    - {{ pin_compatible('intel-openmp') }}  # [blas_impl == "mkl"]
     - libopenblas  # [blas_impl == "openblas"]
     - _openmp_mutex  # [linux]
 
