@@ -38,15 +38,15 @@ requirements:
     - mpir 3.0.0  # [win]
     - openblas {{ openblas }}        # [blas_impl == "openblas"]
     - libopenblas {{ libopenblas }}  # [blas_impl == "openblas"]
+    - libgomp                        # [blas_impl == "openblas" and linux]
     - vcomp14                        # [blas_impl == "openblas" and (win and x86_64)]
-    - libgomp                        # [blas_impl == "mkl" and linux]
     - intel-openmp 2025.0.0          # [blas_impl == "mkl"]
     - mkl-devel 2025.0.0             # [blas_impl == "mkl"]
     - mkl 2025.0.0                   # [blas_impl == "mkl"]
   run:
-    - libgomp                               # [blas_impl == "mkl" and linux]
     - {{ pin_compatible('intel-openmp') }}  # [blas_impl == "mkl"]
     - libopenblas  # [blas_impl == "openblas"]
+    - libgomp      # [blas_impl == "openblas" and linux]
 
 test:
   files:
