@@ -1,3 +1,9 @@
 blas_impl:
   - mkl                        # [(x86 or x86_64) and not osx]
   - openblas
+libxml2:
+  - 2.15.3
+c_compiler_version:   # [osx]
+  - '22'              # [osx]
+cxx_compiler_version: # [osx]
+  - '22'              # [osx]
